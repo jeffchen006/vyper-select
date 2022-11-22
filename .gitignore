@@ -1,2 +1,5 @@
 artifacts/
 global-version
+
+build/
+vyper_select.egg-info/

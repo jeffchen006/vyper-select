@@ -6,9 +6,9 @@ import os
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(SCRIPT_DIR))
 
-import importlib  
-constants = importlib.import_module("vyper-select.constants")
-from constants import (
+# import importlib  
+# constants = importlib.import_module("vyper-select.constants")
+from .constants import (
     ARTIFACTS_DIR,
     INSTALL_VERSIONS,
     SHOW_VERSIONS,
@@ -16,8 +16,8 @@ from constants import (
     UPGRADE,
 )
 
-vyper_select = importlib.import_module("vyper-select.vyper_select")
-from vyper_select import (
+# vyper_select = importlib.import_module("vyper-select.vyper_select")
+from .vyper_select import (
     valid_install_arg,
     valid_version,
     get_installable_versions,
@@ -30,29 +30,29 @@ from vyper_select import (
 
 
 # pylint: disable=too-many-branches
-def solc_select() -> None:
+def vyper_select() -> None:
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(
-        help="Allows users to install and quickly switch between Solidity compiler versions"
+        help="Allows users to install and quickly switch between Vyper compiler versions"
     )
     parser_install = subparsers.add_parser(
-        "install", help="list and install available solc versions"
+        "install", help="list and install available vyper versions"
     )
     parser_install.add_argument(
         INSTALL_VERSIONS,
-        help='specific versions you want to install "0.4.25" or "all"',
+        help='specific versions you want to install "0.3.6" or "all"',
         nargs="*",
         default=[],
         type=valid_install_arg,
     )
-    parser_use = subparsers.add_parser("use", help="change the version of global solc compiler")
+    parser_use = subparsers.add_parser("use", help="change the version of global vyper compiler")
     parser_use.add_argument(
-        USE_VERSION, help="solc version you want to use (eg: 0.4.25)", type=valid_version, nargs="?"
+        USE_VERSION, help="vyper version you want to use (eg: 0.3.6)", type=valid_version, nargs="?"
     )
     parser_use.add_argument("--always-install", action="store_true")
-    parser_use = subparsers.add_parser("versions", help="prints out all installed solc versions")
+    parser_use = subparsers.add_parser("versions", help="prints out all installed vyper versions")
     parser_use.add_argument(SHOW_VERSIONS, nargs="*", help=argparse.SUPPRESS)
-    parser_use = subparsers.add_parser("upgrade", help="upgrades solc-select")
+    parser_use = subparsers.add_parser("upgrade", help="upgrades vyper-select")
     parser_use.add_argument(UPGRADE, nargs="*", help=argparse.SUPPRESS)
 
     args = vars(parser.parse_args())
@@ -84,14 +84,14 @@ def solc_select() -> None:
         sys.exit(0)
 
 
-def solc() -> None:
+def vyper() -> None:
     res = current_version()
     if res:
         (version, _) = res
-        path = ARTIFACTS_DIR.joinpath(f"solc-{version}", f"solc-{version}")
+        path = ARTIFACTS_DIR.joinpath(f"vyper-{version}", f"vyper-{version}")
 
         try:
-            # Display solc usage when invoked with help flag or without options
+            # Display vyper usage when invoked with help flag or without options
             check_process = sys.argv[1:] not in ["--help", []]
             process = subprocess.run(
                 [str(path)] + sys.argv[1:], stdout=subprocess.PIPE, stdin=None, check=check_process
