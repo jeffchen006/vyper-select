@@ -10,8 +10,7 @@ The tool is split into two CLI utilities:
 - `vyper-select`: manages installing and setting different `vyper` compiler versions
 - `vyper`: wrapper around `vyper` which picks the right version according to what was set via `vyper-select`
 
-The `vyper` binaries are downloaded from https://pypi.org/project/vyper/ which contains
-official artifacts for many historical and modern `vyper` versions.
+The `vyper` binaries are downloaded from https://github.com/vyperlang/vyper/releases/ which contains official artifacts for many historical and modern `vyper` versions.
 
 The downloaded binaries are stored in `~/.vyper-select/artifacts/`.
 
