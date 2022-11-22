@@ -1,6 +1,11 @@
 # vyper-select
 A tool to quickly switch between Vyper compiler versions. Motivated by [solc-select](https://github.com/crytic/solc-select) and [vvm](https://github.com/vyperlang/vvm). 
 
+
+`vyper-select` is written simply to satisfy the needs of my own research project, which require compiling Vyper contracts with different versions of the compiler. It is not intended to be a full-featured Vyper version manager, but rather a simple tool to quickly switch between versions of the compiler.
+
+
+
 The tool is split into two CLI utilities:
 - `vyper-select`: manages installing and setting different `vyper` compiler versions
 - `vyper`: wrapper around `vyper` which picks the right version according to what was set via `vyper-select`
