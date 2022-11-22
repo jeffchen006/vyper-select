@@ -77,14 +77,11 @@ $ vyper-select versions
 
 Uninstall other installations of vyper on your machine. `vyper-select` re-installs vyper binaries for your operating system and acts as a wrapper for vyper. With duplicate vyper installations, this may result in your `vyper` version not being up to date.
 
+
 ### "Unsupported Platform" on Windows 
 
 vyper-select is currently made only to satisfy my research needs. And Windows Support can be added if there is a need for it. 
 
-
-```bash 
-pip install .
-```
 
 
 
