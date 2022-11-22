@@ -69,21 +69,7 @@ def _check_for_installed_version(version: str) -> bool:
 
 
 def get_executable(version: str) -> Path:
-    """
-    Return the Path to an installed `vyper` binary.
-    Arguments
-    ---------
-    version : str | Version, optional
-        Installed `vyper` version to get the path of. If not given, returns the
-        path of the active version.
-    vvm_binary_path : Path | str, optional
-        User-defined path, used to override the default installation directory.
-    Returns
-    -------
-    Path
-        `vyper` executable.
-    """
-
+    """Return the path to the executable for the given version."""
     vyper_bin = ARTIFACTS_DIR.joinpath(f"vyper-{version}").joinpath(f"vyper-{version}")
     if not vyper_bin.exists():
         raise argparse.ArgumentTypeError(
@@ -226,7 +212,7 @@ def valid_version(version: str) -> str:
 
     if Version(version) < Version(EARLIEST_RELEASE[_get_os_name()]):
         raise argparse.ArgumentTypeError(
-            f"Invalid version - only solc versions above '{EARLIEST_RELEASE[_get_os_name()]}' are available"
+            f"Invalid version - only vyper versions above '{EARLIEST_RELEASE[_get_os_name()]}' are available"
         )
 
     latest_release = releases[0]
@@ -250,22 +236,22 @@ def _get_os_name() -> str:
         return "darwin"
     if sys.platform == "win32":
         return "windows"
-    raise OSError(f"Unsupported OS: '{sys.platform}' - vvm supports Linux, OSX and Windows")
+    raise OSError(f"Unsupported OS: '{sys.platform}'")
 
 
 
-if __name__ == "__main__":
-    # the following are simply tests. 
-    platform = _get_os_name()
-    print(platform)
+# if __name__ == "__main__":
+#     # the following are simply tests. 
+#     platform = _get_os_name()
+#     print(platform)
 
-    releases = get_available_versions()
-    print(releases)
+#     releases = get_available_versions()
+#     print(releases)
 
-    # releases = _get_releases()
-    # print(releases)
+#     # releases = _get_releases()
+#     # print(releases)
 
-    # # test install
-    # install_artifacts(["0.3.6"])
+#     # # test install
+#     # install_artifacts(["0.3.6"])
 
-    switch_global_version("0.3.6", True)
+#     switch_global_version("0.3.6", True)

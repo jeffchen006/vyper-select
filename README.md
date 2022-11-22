@@ -18,7 +18,7 @@ The downloaded binaries are stored in `~/.vyper-select/artifacts/`.
 ## Quickstart
 
 ```
-pip3 install vyper-select
+pip3 install .
 ```
 
 ## Usage
@@ -26,48 +26,46 @@ pip3 install vyper-select
 The global version of `vyper` can be set with the `vyper-select use <version>` command:
 ```
 $ vyper --version
-solc, the solidity compiler commandline interface
-Version: 0.5.2+commit.1df8f40c.Linux.g++
-$ vyper-select use 0.4.24
-Switched global version to 0.4.24
+0.2.2+commit.337c2ef
+$ vyper-select use 0.3.6
+Switched global version to 0.3.6
 $ vyper --version
-solc, the solidity compiler commandline interface
-Version: 0.4.24+commit.e67f0147.Linux.g++
+0.3.6+commit.4a2124d0
 ```
 
 Use `VYPER_VERSION` environment variable to override the global version:
 ```
 $ vyper --version
-solc, the solidity compiler commandline interface
-Version: 0.4.24+commit.e67f0147.Linux.g++
-$ VYPER_VERSION=0.5.2 vyper --version
-solc, the solidity compiler commandline interface
-Version: 0.5.2+commit.1df8f40c.Linux.g++
+0.2.2+commit.337c2ef
+$ VYPER_VERSION=0.3.6 vyper --version
+0.3.6+commit.4a2124d0
 ```
 
 You can list all available versions with `vyper-select install`:
 ```
 $ vyper-select install
 Available versions to install:
-0.3.6
-0.4.0
+0.1.0-beta.16
+0.1.0-beta.17
 ...
-0.8.0
-0.8.1
+0.3.6
+0.3.7
 ```
 
 And install the one you need with `vyper-select install <version>`:
 ```
-$ vyper-select install 0.8.1
-Installing '0.8.1'...
-Version '0.8.1' installed.
+$ vyper-select install 0.3.6
+Installing '0.3.6'...
+Version '0.3.6' installed.
 ```
 
 Display the currently installed versions:
 ```
 $ vyper-select versions
-0.8.0
-0.4.2 (current, set by /Users/artur/.solc-select/global-version)
+0.3.7
+0.3.6 (current, set by /home/zhiychen/.vyper-select/global-version)
+0.3.4
+0.3.3
 ```
 
 ## Getting Help
@@ -78,7 +76,7 @@ $ vyper-select versions
 
 ### vyper-version not changing after running `vyper-select use [version]` or setting `VYPER_VERSION`
 
-Uninstall other installations of solc on your machine. `solc-select` re-installs solc binaries for your operating system and acts as a wrapper for solc. With duplicate solc installations, this may result in your `solc` version not being up to date.
+Uninstall other installations of vyper on your machine. `vyper-select` re-installs vyper binaries for your operating system and acts as a wrapper for vyper. With duplicate vyper installations, this may result in your `vyper` version not being up to date.
 
 ### "Unsupported Platform" on Windows 
 
@@ -86,14 +84,8 @@ vyper-select is currently made only to satisfy my research needs. And Windows Su
 
 
 ```bash 
-pip install solc-select==1.0.0b1
+pip install .
 ```
-
-Alternatively, for the most up-to-date version, clone this repository and run 
-```bash 
-pip install . --user
-```
-
 
 
 
