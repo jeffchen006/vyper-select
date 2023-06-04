@@ -17,7 +17,8 @@ The downloaded binaries are stored in `~/.vyper-select/artifacts/`.
 ## Quickstart
 
 ```
-pip3 install .
+cd vyper-select/
+python3 setup.py install 
 ```
 
 ## Usage
